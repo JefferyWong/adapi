@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
@@ -16,5 +17,4 @@ return array(
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'BenGee\\Slim\\Utils\\' => array($vendorDir . '/bgillet/slim-utils/src/BenGee/Slim/Utils'),
-    'BenGee\\Slim\\Db\\' => array($vendorDir . '/bgillet/slim-orm/src/BenGee/Slim/Db'),
 );
