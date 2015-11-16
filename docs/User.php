@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\User;
+namespace App\Model;
 
 /**
  * @Entity 
@@ -7,7 +7,10 @@ namespace App\Model\User;
  **/
 class User
 {
-    /** @Id @Column(type="integer") **/
+    /** @Id 
+     * @Column(type="integer") 
+     * @GeneratedValue(strategy="UUID");
+     **/
     private $id;
     
     /** @Column(type="string") **/
@@ -23,6 +26,9 @@ class User
     private $payment_password;
     
     /** @Column(type="string") **/
+    private $token;
+    
+    /** @Column(type="string") **/
     private $email;
     
     /** @Column(type="string") **/
@@ -32,7 +38,7 @@ class User
     private $created_at;
     
     /** @Column(type="integer") **/
-    private $update_at;
+    private $updated_at;
     
     /**
      * @return the $id
@@ -101,9 +107,9 @@ class User
     /**
      * @return the $update_at
      */
-    public function getUpdate_at()
+    public function getUpdated_at()
     {
-        return $this->update_at;
+        return $this->updated_at;
     }
 
     /**
@@ -173,10 +179,26 @@ class User
     /**
      * @param field_type $update_at
      */
-    public function setUpdate_at($update_at)
+    public function setUpdated_at($update_at)
     {
-        $this->update_at = $update_at;
+        $this->updated_at = $update_at;
     }
+    /**
+     * @return the $token
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param field_type $token
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
+
 
     
     

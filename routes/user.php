@@ -1,7 +1,8 @@
 <?php
+use App\Lib\Util;
+use App\Model\User;
 
-$app->get('/', function() use($app, $em){
-	$responseBody = $em->createQuery('SELECT u FROM App\Model\User u');
-	$app->response->headers->set('Content-Type', 'application/json');
-	$app->response->setBody(json_encode($responseBody));
+//用户信息完善
+$app->post('/userinfo/:systemid', function($systemid) use($app, $em){
+	//TODO: Complete user info.
 });

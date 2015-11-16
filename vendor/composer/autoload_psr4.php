@@ -17,4 +17,6 @@ return array(
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'BenGee\\Slim\\Utils\\' => array($vendorDir . '/bgillet/slim-utils/src/BenGee/Slim/Utils'),
+    'App\\Model\\' => array($baseDir . '/docs'),
+    'App\\Lib\\' => array($baseDir . '/lib'),
 );
