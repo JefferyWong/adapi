@@ -16,6 +16,27 @@ class User
     /** @Column(type="string") **/
     private $username;
     
+    /** @Column(type="integer") **/
+    private $birthday;
+    
+    /** @Column(type="string") **/
+    private $id_number;
+    
+    /** @Column(type="integer") **/
+    private $phone;
+    
+    /** @Column(type="string") **/
+    private $sex;
+    
+    /** @Column(type="string") **/
+    private $nation;
+    
+    /** @Column(type="string") **/
+    private $home_town;
+    
+    /** @Column(type="integer") **/
+    private $inviter;
+    
     /** @Column(type="string") **/
     private $system_id;
     
@@ -27,9 +48,6 @@ class User
     
     /** @Column(type="string") **/
     private $token;
-    
-    /** @Column(type="string") **/
-    private $email;
     
     /** @Column(type="string") **/
     private $status;
@@ -198,6 +216,118 @@ class User
     {
         $this->token = $token;
     }
+    /**
+     * @return the $birthday
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * @param field_type $birthday
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+    }
+
+    /**
+     * @return the $id_number
+     */
+    public function getId_number()
+    {
+        return $this->id_number;
+    }
+
+    /**
+     * @param field_type $id_number
+     */
+    public function setId_number($id_number)
+    {
+        $this->id_number = $id_number;
+    }
+
+    /**
+     * @return the $phone
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param field_type $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return the $sex
+     */
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    /**
+     * @param field_type $sex
+     */
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+    }
+
+    /**
+     * @return the $nation
+     */
+    public function getNation()
+    {
+        return $this->nation;
+    }
+
+    /**
+     * @param field_type $nation
+     */
+    public function setNation($nation)
+    {
+        $this->nation = $nation;
+    }
+
+    /**
+     * @return the $home_town
+     */
+    public function getHome_town()
+    {
+        return $this->home_town;
+    }
+
+    /**
+     * @param field_type $home_town
+     */
+    public function setHome_town($home_town)
+    {
+        $this->home_town = $home_town;
+    }
+
+    /**
+     * @return the $inviter
+     */
+    public function getInviter()
+    {
+        return $this->inviter;
+    }
+
+    /**
+     * @param field_type $inviter
+     */
+    public function setInviter($inviter)
+    {
+        $this->inviter = $inviter;
+    }
+
 
 
     

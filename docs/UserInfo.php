@@ -16,42 +16,12 @@ class UserInfo
     /**
      * @Column(type="string")
      */
-    private $realname;
-    
-    /**
-     * @Column(type="string")
-     */
-    private $nation;
-    
-    /**
-     * @Column(type="string")
-     */
-    private $hometown;
-    
-    /**
-     * @Column(type="string")
-     */
-    private $id_number;
-    
-    /**
-     * @Column(type="integer")
-     */
-    private $birthday;
-    
-    /**
-     * @Column(type="string")
-     */
     private $avatar;
     
     /**
      * @Column(type="string")
      **/
     private $address;
-    
-    /**
-     * @Column(type="string")
-     */
-    private $inviter;
     
     /**
      * @Column(type="string")
@@ -78,10 +48,6 @@ class UserInfo
      */
     private $weight;
     
-    /**
-     * @Column(type="integer")
-     */
-    private $phone;
     
     /**
      * @Column(type="smallint")
@@ -129,14 +95,6 @@ class UserInfo
     private $car_info;
     
     /**
-     * @return the $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @return the $user_id
      */
     public function getUser_id()
@@ -145,43 +103,11 @@ class UserInfo
     }
 
     /**
-     * @return the $realname
-     */
-    public function getRealname()
-    {
-        return $this->realname;
-    }
-
-    /**
      * @return the $nation
      */
     public function getNation()
     {
         return $this->nation;
-    }
-
-    /**
-     * @return the $hometown
-     */
-    public function getHometown()
-    {
-        return $this->hometown;
-    }
-
-    /**
-     * @return the $id_number
-     */
-    public function getId_number()
-    {
-        return $this->id_number;
-    }
-
-    /**
-     * @return the $birthday
-     */
-    public function getBirthday()
-    {
-        return $this->birthday;
     }
 
     /**
@@ -198,14 +124,6 @@ class UserInfo
     public function getAddress()
     {
         return $this->address;
-    }
-
-    /**
-     * @return the $initer
-     */
-    public function getIniter()
-    {
-        return $this->initer;
     }
 
     /**
@@ -246,14 +164,6 @@ class UserInfo
     public function getWeight()
     {
         return $this->weight;
-    }
-
-    /**
-     * @return the $phone
-     */
-    public function getPhone()
-    {
-        return $this->phone;
     }
 
     /**
@@ -328,13 +238,6 @@ class UserInfo
         return $this->car_info;
     }
 
-    /**
-     * @param field_type $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @param field_type $user_id
@@ -342,46 +245,6 @@ class UserInfo
     public function setUser_id($user_id)
     {
         $this->user_id = $user_id;
-    }
-
-    /**
-     * @param field_type $realname
-     */
-    public function setRealname($realname)
-    {
-        $this->realname = $realname;
-    }
-
-    /**
-     * @param field_type $nation
-     */
-    public function setNation($nation)
-    {
-        $this->nation = $nation;
-    }
-
-    /**
-     * @param field_type $hometown
-     */
-    public function setHometown($hometown)
-    {
-        $this->hometown = $hometown;
-    }
-
-    /**
-     * @param field_type $id_number
-     */
-    public function setId_number($id_number)
-    {
-        $this->id_number = $id_number;
-    }
-
-    /**
-     * @param field_type $birthday
-     */
-    public function setBirthday($birthday)
-    {
-        $this->birthday = $birthday;
     }
 
     /**
@@ -398,14 +261,6 @@ class UserInfo
     public function setAddress($address)
     {
         $this->address = $address;
-    }
-
-    /**
-     * @param field_type $initer
-     */
-    public function setIniter($initer)
-    {
-        $this->initer = $initer;
     }
 
     /**
@@ -448,13 +303,6 @@ class UserInfo
         $this->weight = $weight;
     }
 
-    /**
-     * @param field_type $phone
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-    }
 
     /**
      * @param field_type $is_have_baby
