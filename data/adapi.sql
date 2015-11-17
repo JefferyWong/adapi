@@ -33,22 +33,6 @@ CREATE TABLE `bank_card` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for migration
--- ----------------------------
-DROP TABLE IF EXISTS `migration`;
-CREATE TABLE `migration` (
-  `version` varchar(180) COLLATE utf8_bin NOT NULL,
-  `apply_time` int(11) DEFAULT NULL,
-  PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of migration
--- ----------------------------
-INSERT INTO `migration` VALUES ('m000000_000000_base', '1446037439');
-INSERT INTO `migration` VALUES ('m130524_201442_init', '1446037441');
-
--- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -57,7 +41,6 @@ CREATE TABLE `user` (
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `system_id` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `payment_password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '10',
