@@ -3,10 +3,11 @@ use App\Lib\Util;
 use App\Model\User;
 
 //用户注册
-$app->post('/signin', function() use($app, $em){
+$app->post('/auth/signin', function() use($app, $em){
     $systemId = $app->request->params("system_id");
     $password = $app->request->params("password");
     $username = $app->request->params("username");
+    
     if ($password == '' || $password == null || $systemId == "" || $systemId == null || $username == "" | $username == null) {
         $app->response->headers->set('Content-Type', 'application/json');
         echo Util::resPonseJson($app, 4000, "Invalid params", array());
@@ -43,12 +44,12 @@ $app->post('/signin', function() use($app, $em){
     exit;
 });
 
-$app->post('/login', function() use($app, $em){
+$app->post('/auth/login', function() use($app, $em){
     $system_id = $app->request->post('system_id');
     $username = $app->request->post("username");
     $password = $app->request->post('password');
     
-    if ($password == '' || $password == null || ($systemId == "" || $systemId == null) && ($username == "" | $username == null)) {
+    if ($password == '' || $password == null || ($system_id == "" || $system_id == null) && ($username == "" | $username == null)) {
         $app->response->headers->set('Content-Type', 'application/json');
         echo Util::resPonseJson($app, 4000, "Invalid params", array());
         exit();
@@ -80,4 +81,8 @@ $app->post('/login', function() use($app, $em){
         echo Util::resPonseJson($app, 4001, "Authenation failed.", array());
         exit;
     }
+});
+
+$app->get('/phpinfo', function() use ($app){
+   echo phpinfo();
 });
