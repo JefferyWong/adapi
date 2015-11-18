@@ -99,29 +99,21 @@ $app->post('/auth/signin', function() use($app, $em){
 });
 
 $app->post('/auth/login', function() use($app, $em){
-    $system_id = $app->request->post('system_id');
-    $username = $app->request->post("username");
+    $phone = $app->request->post('phoneh');
     $password = $app->request->post('password');
     
-    if ($password == '' || $password == null || ($system_id == "" || $system_id == null) && ($username == "" | $username == null)) {
+    if ($password == '' || $password == null || ($phone == "" || $phone == null) ) {
         $app->response->headers->set('Content-Type', 'application/json');
         echo Util::resPonseJson($app, 4000, "Invalid params", array());
         exit();
     }
     
-    try {
-    $user = $em->createQueryBuilder()
-        ->select("u")
-        ->from("App\Model\User", 'u')
-        ->where("u.system_id = ?1 or u.username=?2")
-        ->setParameters(array(1=>$system_id, 2=>$username))
-        ->getQuery()
-        ->getSingleResult();
-    } catch (\Doctrine\ORM\NoResultException $e) {
+    $user = $em->getRepository('App\Model\User')->findOneBy(array('phone'=>$phone));
+    if (!user) {
         $app->response->headers->set('Content-Type', 'application/json');
         echo Util::resPonseJson($app, 4004, "User not found", array());
         exit;
-    } 
+    }
 
     if (password_verify($password, $user->getPassword_hash()) ){
         $token = password_hash(strval(time()), PASSWORD_BCRYPT);
