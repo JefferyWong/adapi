@@ -57,7 +57,7 @@ class User
     
     /** @Column(type="integer") **/
     private $updated_at;
-    
+      
     /**
      * @return the $id
      */
@@ -328,9 +328,25 @@ class User
         $this->inviter = $inviter;
     }
 
-
-
-    
+    public function toArray(){
+        $user = array();
+        $user['id']             = $this->id;
+        $user['username']       = $this->username;
+        $user['password_hash']  = $this->password_hash;
+        $user['id_number']      = $this->id_number;
+        $user['phone']          = $this->phone;
+        $user['sex']            = $this->sex;
+        $user['home_town']      = $this->home_town;
+        $user['nation']         = $this->nation;
+        $user['birthday']       = $this->birthday;
+        $user['inviter']        = $this->inviter;
+        $user['created_at']     = $this->created_at;
+        $user['updated_at']     = $this->updated_at;
+        $user['payment_password'] = $this->payment_password;
+        $user['status']         = $this->status;
+        $user['token']          = $this->token;
+        return $user;
+    }
     
 }
 

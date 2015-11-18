@@ -376,7 +376,27 @@ class UserInfo
         $this->car_info = $car_info;
     }
 
-    
+    public  function toArray(){
+        $userInfo = array();
+        $userInfo['address'] = $this->address;
+        $userInfo['avatar'] = $this->avatar;
+        $userInfo['bloodtype'] = $this->bloodtype;
+        $userInfo['car_info'] = $this->car_info;
+        $userInfo['education'] = $this->education;
+        $userInfo['food_habits'] = $this->food_habits;
+        $userInfo['habits'] = $this->habits;
+        $userInfo['income'] = $this->income;
+        $userInfo['is_accept_ad_money'] = $this->is_accept_ad_money;
+        $userInfo['is_have_baby'] = $this->is_have_baby;
+        $userInfo['is_married'] = $this->is_married;
+        $userInfo['online_shop_type'] = $this->online_shop_type;
+        $userInfo['religion'] = $this->religion;
+        $userInfo['tall'] = $this->tall;
+        $userInfo['user_id'] = $this->user_id;
+        $userInfo['weight'] = $this->weight;
+        $userInfo['work'] = $this->work;
+        return $userInfo;
+    }
     
 }
 

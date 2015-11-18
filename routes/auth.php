@@ -16,11 +16,11 @@ $app->post('/auth/signin', function() use($app, $em){
     $home_town  = $app->request->params("home_town");
     $nation     = $app->request->params("nation");
     
-    if ($systemId == '' || $systemId == null) {
-        $app->response->headers->set('Content-Type', 'application/json');
-        echo Util::resPonseJson($app, 4000, "system_id cannot be null", array());
-        exit();
-    }
+//     if ($systemId == '' || $systemId == null) {
+//         $app->response->headers->set('Content-Type', 'application/json');
+//         echo Util::resPonseJson($app, 4000, "system_id cannot be null", array());
+//         exit();
+//     }
     if ($password == '' || $password == null) {
         $app->response->headers->set('Content-Type', 'application/json');
         echo Util::resPonseJson($app, 4000, "password cannot be null", array());
@@ -94,12 +94,12 @@ $app->post('/auth/signin', function() use($app, $em){
     }
     
     $app->response->headers->set('Content-Type', 'application/json');
-    echo Util::resPonseJson($app, 200, "Register success", array());
+    echo Util::resPonseJson($app, 200, "Register success", array("user_id"=>$user->getId()));
     exit;
 });
 
 $app->post('/auth/login', function() use($app, $em){
-    $phone = $app->request->post('phoneh');
+    $phone = $app->request->post('phone');
     $password = $app->request->post('password');
     
     if ($password == '' || $password == null || ($phone == "" || $phone == null) ) {
@@ -109,7 +109,7 @@ $app->post('/auth/login', function() use($app, $em){
     }
     
     $user = $em->getRepository('App\Model\User')->findOneBy(array('phone'=>$phone));
-    if (!user) {
+    if (!$user) {
         $app->response->headers->set('Content-Type', 'application/json');
         echo Util::resPonseJson($app, 4004, "User not found", array());
         exit;

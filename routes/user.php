@@ -86,6 +86,23 @@ $app->post('/userinfo/:user_id', $check_auth($em), function($user_id) use($app, 
 });
 
 $app->get('/userinfo/:user_id', $check_auth($em), function($user_id) use($app, $em){
-    echo $systemid;
-    exit;
+    $user = $em->getRepository('App\Model\User')->find($user_id);
+	if (!$user){
+	    $app->response->headers->set('Content-Type', 'application/json');
+	    echo Util::resPonseJson($app, 4004, "User not exists.", array());
+	    exit;
+	}
+	
+	$userInfo = $em->getRepository('App\Model\UserInfo')->find($user_id);
+
+	if (!$userInfo){
+	    $userInfo = new UserInfo();
+	}
+    $allInfo = array_merge($user->toArray(), $userInfo->toArray());
+    unset($allInfo['password_hash']);
+    unset($allInfo['payment_password']);
+    unset($allInfo['user_id']);
+	$app->response->headers->set('Content-Type', 'application/json');
+	echo Util::resPonseJson($app, 200, "", array("user" => $allInfo));
+	exit;
 });
