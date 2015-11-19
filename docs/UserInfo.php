@@ -70,11 +70,6 @@ class UserInfo
     private $income;
     
     /**
-     * @Column(type="smallint")
-     */
-    private $is_accept_ad_money;
-    
-    /**
      * @Column(type="string")
      */
     private $habits;
@@ -196,14 +191,6 @@ class UserInfo
     public function getIncome()
     {
         return $this->income;
-    }
-
-    /**
-     * @return the $is_accept_ad_money
-     */
-    public function getIs_accept_ad_money()
-    {
-        return $this->is_accept_ad_money;
     }
 
     /**
@@ -337,14 +324,6 @@ class UserInfo
     }
 
     /**
-     * @param field_type $is_accept_ad_money
-     */
-    public function setIs_accept_ad_money($is_accept_ad_money)
-    {
-        $this->is_accept_ad_money = $is_accept_ad_money;
-    }
-
-    /**
      * @param field_type $habits
      */
     public function setHabits($habits)
@@ -386,7 +365,6 @@ class UserInfo
         $userInfo['food_habits'] = $this->food_habits;
         $userInfo['habits'] = $this->habits;
         $userInfo['income'] = $this->income;
-        $userInfo['is_accept_ad_money'] = $this->is_accept_ad_money;
         $userInfo['is_have_baby'] = $this->is_have_baby;
         $userInfo['is_married'] = $this->is_married;
         $userInfo['online_shop_type'] = $this->online_shop_type;

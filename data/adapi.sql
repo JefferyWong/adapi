@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-11-18 00:05:42
+Date: 2015-11-20 00:04:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,6 +26,19 @@ CREATE TABLE `bank_card` (
   `card_bank` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '开户银行',
   PRIMARY KEY (`id`),
   KEY `user_bank_card` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Table structure for trade_history
+-- ----------------------------
+DROP TABLE IF EXISTS `trade_history`;
+CREATE TABLE `trade_history` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `account` decimal(10,2) DEFAULT NULL COMMENT '金额',
+  `type` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '交易类型[支出(-), 收入(+)]',
+  `remark` varchar(255) COLLATE utf8_bin DEFAULT '' COMMENT '备注',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
@@ -56,6 +69,18 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8893 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
+-- Table structure for user_account
+-- ----------------------------
+DROP TABLE IF EXISTS `user_account`;
+CREATE TABLE `user_account` (
+  `user_id` int(11) NOT NULL,
+  `available` decimal(10,2) DEFAULT '0.00',
+  `unavailable` decimal(10,2) DEFAULT '0.00',
+  `total` decimal(10,2) DEFAULT '0.00',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
 -- Table structure for user_info
 -- ----------------------------
 DROP TABLE IF EXISTS `user_info`;
@@ -71,8 +96,7 @@ CREATE TABLE `user_info` (
   `is_have_baby` smallint(1) DEFAULT NULL COMMENT '是否有宝宝',
   `is_married` smallint(1) DEFAULT NULL COMMENT '是否结婚',
   `work` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '工作状况',
-  `income` smallint(2) DEFAULT NULL COMMENT '收入',
-  `is_accept_ad_money` smallint(1) DEFAULT NULL COMMENT '是否接收广告和红包',
+  `income` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '收入',
   `habits` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '兴趣爱好',
   `online_shop_type` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `food_habits` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '饮食习惯',

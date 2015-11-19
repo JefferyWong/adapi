@@ -1,4 +1,6 @@
 <?php
+session_cache_limiter(false);
+session_start();
 require_once './vendor/autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
@@ -46,11 +48,13 @@ $check_auth = function ($em){
             echo Util::resPonseJson($app, 4003, "Authenation denied", array());
             exit;
         }
+        $app->flashNow('user_id', $user->getId());
     };
 };
 
 //require routes files
 require_once './routes/user.php';
 require_once './routes/auth.php';
+require_once './routes/account.php';
 
 $app->run();

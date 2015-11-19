@@ -129,6 +129,16 @@ $app->post('/auth/login', function() use($app, $em){
     }
 });
 
+$app->get('/auth/logout', $check_auth($em), function () use($app, $em){
+       $user = $em->getRepository('App\Model\User')->find($_SESSION['user_id']);
+       $user->setToken('');
+       $em->persist($user);
+       $em->flush();
+       $app->response->headers->set('Content-Type', 'application/json');
+       echo Util::resPonseJson($app, 200, "Login success.", array('token'=>$token));
+       exit;
+});
+
 $app->get('/phpinfo', function() use ($app){
    echo phpinfo();
 });
