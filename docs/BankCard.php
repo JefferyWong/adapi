@@ -92,7 +92,14 @@ class BankCard
         $this->card_bank = $card_bank;
     }
 
-    
+    public function toArray(){
+        $array                = [];
+        $array['id']          = $this->id;
+        $array['user_id']     = $this->user_id;
+        $array['card_number'] = $this->card_number;
+        $array['card_bank']   = $this->card_bank;
+        return $array;
+    }
     
 }
 

@@ -30,3 +30,27 @@ $app->post('/account/bank_card/bind', $check_auth($em), function () use($app, $e
        exit;
    }
 });
+
+$app->post('/account/payment_password', $check_auth($em), function () use ($app, $em){
+   $payment_password = $app->request->params('payment_password');
+   $flash = $app->flashData();
+   $user_id = isset($flash['user_id']) ? $flash['user_id'] : '';
+   $user = $em->getRepository('App\Model\User')->find($user_id);
+   if (!$user){
+       $app->response->headers->set('Content-Type', 'application/json');
+       echo Util::resPonseJson($app, 40004, "User not exists.", array());
+       exit;
+   }
+   $user->setPayment_password(password_hash($payment_password, PASSWORD_BCRYPT));
+   try {
+       $em->persist($user);
+       $em->flush();
+       $app->response->headers->set('Content-Type', 'application/json');
+       echo Util::resPonseJson($app, 200, "", array());
+       exit;
+   } catch (Exception $e) {
+       $app->response->headers->set('Content-Type', 'application/json');
+       echo Util::resPonseJson($app, 500, "System Error", array());
+       exit;
+   }
+});

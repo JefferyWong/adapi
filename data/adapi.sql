@@ -1,22 +1,24 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50617
-Source Host           : localhost:3306
-Source Database       : yii2advanced
+ Source Server         : 99.100
+ Source Server Type    : MySQL
+ Source Server Version : 50709
+ Source Host           : 192.168.99.100
+ Source Database       : adapi
 
-Target Server Type    : MYSQL
-Target Server Version : 50617
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 50709
+ File Encoding         : utf-8
 
-Date: 2015-11-20 00:04:15
+ Date: 11/24/2015 18:55:36 PM
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for bank_card
+--  Table structure for `bank_card`
 -- ----------------------------
 DROP TABLE IF EXISTS `bank_card`;
 CREATE TABLE `bank_card` (
@@ -29,7 +31,7 @@ CREATE TABLE `bank_card` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Table structure for trade_history
+--  Table structure for `trade_history`
 -- ----------------------------
 DROP TABLE IF EXISTS `trade_history`;
 CREATE TABLE `trade_history` (
@@ -42,7 +44,7 @@ CREATE TABLE `trade_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Table structure for user
+--  Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -69,19 +71,19 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8893 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Table structure for user_account
+--  Table structure for `user_account`
 -- ----------------------------
 DROP TABLE IF EXISTS `user_account`;
 CREATE TABLE `user_account` (
   `user_id` int(11) NOT NULL,
-  `available` decimal(10,2) DEFAULT '0.00',
-  `unavailable` decimal(10,2) DEFAULT '0.00',
+  `available_balance` decimal(10,2) DEFAULT '0.00',
+  `unavailable_balance` decimal(10,2) DEFAULT '0.00',
   `total` decimal(10,2) DEFAULT '0.00',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Table structure for user_info
+--  Table structure for `user_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
@@ -103,3 +105,5 @@ CREATE TABLE `user_info` (
   `car_info` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆信息',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+SET FOREIGN_KEY_CHECKS = 1;
