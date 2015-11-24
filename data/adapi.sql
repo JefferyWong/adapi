@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-11-25 00:44:40
+Date: 2015-11-25 00:46:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,6 +112,7 @@ CREATE TABLE `user_account` (
   `available_balance` decimal(10,2) DEFAULT '0.00',
   `unavailable_balance` decimal(10,2) DEFAULT '0.00',
   `total` decimal(10,2) DEFAULT '0.00',
+  `lucky_chance` int(11) DEFAULT '0' COMMENT '幸运抽奖次数',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
