@@ -33,6 +33,13 @@ $app->post('/account/bank_card/bind', $check_auth($em), function () use($app, $e
 
 $app->post('/account/payment_password', $check_auth($em), function () use ($app, $em){
    $payment_password = $app->request->params('payment_password');
+   
+   if($payment_password == '' || $payment_password == null){
+       $app->response->headers->set('Content-Type', 'application/json');
+       echo Util::resPonseJson($app, 40000, "Invalid Param", array());
+       exit;
+   }
+   
    $flash = $app->flashData();
    $user_id = isset($flash['user_id']) ? $flash['user_id'] : '';
    $user = $em->getRepository('App\Model\User')->find($user_id);
@@ -53,4 +60,32 @@ $app->post('/account/payment_password', $check_auth($em), function () use ($app,
        echo Util::resPonseJson($app, 500, "System Error", array());
        exit;
    }
+});
+
+$app->post('/account/payment_password/check', $check_auth($em), function() use($app, $em){
+    $payment_password = $app->request->params('payment_password');
+     
+    if($payment_password == '' || $payment_password == null){
+        $app->response->headers->set('Content-Type', 'application/json');
+        echo Util::resPonseJson($app, 40000, "Invalid Param", array());
+        exit;
+    }
+    $flash = $app->flashData();
+    $user_id = isset($flash['user_id']) ? $flash['user_id'] : '';
+    $user = $em->getRepository('App\Model\User')->find($user_id);
+    if (!$user){
+        $app->response->headers->set('Content-Type', 'application/json');
+        echo Util::resPonseJson($app, 40004, "User not exists.", array());
+        exit;
+    }
+    
+    if (password_verify($payment_password, $user->getPayment_password())){
+        $app->response->headers->set('Content-Type', 'application/json');
+        echo Util::resPonseJson($app, 200, "OK", array());
+        exit;
+    } else {
+        $app->response->headers->set('Content-Type', 'application/json');
+        echo Util::resPonseJson($app, 200, "Password Not Match", array());
+        exit;
+    }
 });

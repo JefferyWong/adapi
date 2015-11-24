@@ -1,24 +1,43 @@
 /*
- Navicat Premium Data Transfer
+Navicat MySQL Data Transfer
 
- Source Server         : 99.100
- Source Server Type    : MySQL
- Source Server Version : 50709
- Source Host           : 192.168.99.100
- Source Database       : adapi
+Source Server         : localhost
+Source Server Version : 50617
+Source Host           : localhost:3306
+Source Database       : yii2advanced
 
- Target Server Type    : MySQL
- Target Server Version : 50709
- File Encoding         : utf-8
+Target Server Type    : MYSQL
+Target Server Version : 50617
+File Encoding         : 65001
 
- Date: 11/24/2015 18:55:36 PM
+Date: 2015-11-25 00:44:40
 */
 
-SET NAMES utf8;
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
---  Table structure for `bank_card`
+-- Table structure for ads
+-- ----------------------------
+DROP TABLE IF EXISTS `ads`;
+CREATE TABLE `ads` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `type` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `question` text COLLATE utf8_bin,
+  `choices` text COLLATE utf8_bin,
+  `answer` text COLLATE utf8_bin,
+  `image` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `video` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `company` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of ads
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bank_card
 -- ----------------------------
 DROP TABLE IF EXISTS `bank_card`;
 CREATE TABLE `bank_card` (
@@ -31,7 +50,12 @@ CREATE TABLE `bank_card` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
---  Table structure for `trade_history`
+-- Records of bank_card
+-- ----------------------------
+INSERT INTO `bank_card` VALUES ('0', '1', '1541716191816171', '中国农业银行');
+
+-- ----------------------------
+-- Table structure for trade_history
 -- ----------------------------
 DROP TABLE IF EXISTS `trade_history`;
 CREATE TABLE `trade_history` (
@@ -44,7 +68,11 @@ CREATE TABLE `trade_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
---  Table structure for `user`
+-- Records of trade_history
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -68,10 +96,15 @@ CREATE TABLE `user` (
   UNIQUE KEY `id` (`id`) USING HASH,
   UNIQUE KEY `id_number` (`id_number`) USING HASH,
   UNIQUE KEY `phone` (`phone`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=8893 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
---  Table structure for `user_account`
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', 'username', '662684400', '622827118117181923', '1qazxsw2', '2147483647', '$2y$10$oiQjq6MR9uQ.fbGR32/rmelUMjQM4mzJ72tb4cJ79d9Q5L1xxpELS', '$2y$10$0Y57XbHXmoEN7WyDku7chuS7WIcQEaB/XpqHesqMfT2uk.ZtlNt9O', '$2y$10$c6SkC7ZNXhosi4cX.T93dOsYNnzzOURVOu7v2fEfbgG4TNsZYHtuC', 'male', '汉族', '甘肃，武威', null, '1', '1448374377', '1448374377');
+
+-- ----------------------------
+-- Table structure for user_account
 -- ----------------------------
 DROP TABLE IF EXISTS `user_account`;
 CREATE TABLE `user_account` (
@@ -83,7 +116,11 @@ CREATE TABLE `user_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
---  Table structure for `user_info`
+-- Records of user_account
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for user_info
 -- ----------------------------
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
@@ -106,4 +143,6 @@ CREATE TABLE `user_info` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- ----------------------------
+-- Records of user_info
+-- ----------------------------
