@@ -35,7 +35,8 @@ $em = EntityManager::create($connectionParams, $config);
 
 $app = new \Slim\Slim(
     array(
-        "debug"=>true,
+        "debug"             => true,
+        "templates.path"    => "./admin/templates",
     ));
 
 $check_auth = function ($em){
@@ -56,5 +57,9 @@ $check_auth = function ($em){
 require_once './routes/user.php';
 require_once './routes/auth.php';
 require_once './routes/account.php';
+
+//require admin routes files
+require_once './admin/routes/index.php';
+require_once './admin/routes/ad.php';
 
 $app->run();
